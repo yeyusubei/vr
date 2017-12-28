@@ -2,10 +2,10 @@
 
 const Service = require('egg').Service;
 
-class HireJobsService extends Service{
+class HireProjectDetailService extends Service{
     // 获取所有数据
   async getList() {
-    const result = await this.app.mysql.select('hire_jobs', {
+    const result = await this.app.mysql.select('hire_project_detail', {
       orders: [[ 'id', 'desc' ]], // 排序方式
     });
     return { data: result };
@@ -13,16 +13,16 @@ class HireJobsService extends Service{
 
   // 根据用户id查询数据
   async findByID(id) {
-    const result = await this.app.mysql.get('hire_jobs', { id });
+    const result = await this.app.mysql.get('hire_project_detail', { id });
     return { data: result };
   }
 
   // 新增的数据
   async addModel(data) {
     const { ctx, app } = this;
-   data.create_time = ctx.helper.currentDateTime();
+   // data.createtime = ctx.helper.currentDateTime();
     // 新增数据
-    const result = await app.mysql.insert('hire_jobs', data);
+    const result = await app.mysql.insert('hire_project_detail', data);
     return {
       insertId: result.insertId, // 添加返回的ID
       error_code: result.affectedRows > 0 ? 0 : 1,
@@ -34,7 +34,7 @@ class HireJobsService extends Service{
     // 修改数据，将会根据主键 ID 查找，并更新
     const { ctx, app } = this;
     //data.createtime = ctx.helper.currentDateTime();
-    const result = await app.mysql.update('hire_jobs', data);
+    const result = await app.mysql.update('hire_project_detail', data);
     return {
       error_code: result.affectedRows > 0 ? 0 : 1,
       msg: result.affectedRows > 0 ? '修改成功' : '修改失败',
@@ -43,7 +43,7 @@ class HireJobsService extends Service{
 
   // 根据id删除数据
   async destroyModel(id) {
-    const result = await this.app.mysql.delete('hire_jobs', { id });
+    const result = await this.app.mysql.delete('hire_project_detail', { id });
     return {
       error_code: result.affectedRows > 0 ? 0 : 1,
       msg: result.affectedRows > 0 ? '删除成功' : '删除失败',
@@ -52,4 +52,4 @@ class HireJobsService extends Service{
 
 }
 
-module.exports = HireJobsService;
+module.exports = HireProjectDetailService;

@@ -94,6 +94,13 @@ router.post('/hireoutsideprojects/add', controller.hireoutsideprojects.add);
 router.post('/hireoutsideprojects/update', controller.hireoutsideprojects.update);
 router.post('/hireoutsideprojects/delete', controller.hireoutsideprojects.destroy);
 
+//外包项目
+router.get('/hireprojectdetail/list',controller.hireprojectdetail.list);
+router.get('/hireprojectdetail/getById', controller.hireprojectdetail.find);
+router.post('/hireprojectdetail/add', controller.hireprojectdetail.add);
+router.post('/hireprojectdetail/update', controller.hireprojectdetail.update);
+router.post('/hireprojectdetail/delete', controller.hireprojectdetail.destroy);
+
   // 单文件上传
   router.post('/goods/singleUpload', controller.upload.fileSingleUpload);
   router.post('/goods/multipleUpload', controller.upload.MultipleUpload);
@@ -113,6 +120,39 @@ router.post('/homeads/add', controller.homeads.add);
 router.post('/homeads/update', controller.homeads.update);
 router.post('/homeads/delete', controller.homeads.destroy);
 
+//论坛轮播
+router.get('/bbsslide/list', controller.bbsslide.list);
+router.get('/bbsslide/getModelById', controller.bbsslide.find);
+router.post('/bbsslide/add', controller.bbsslide.add);
+router.post('/bbsslide/update', controller.bbsslide.update);
+router.post('/bbsslide/delete', controller.bbsslide.destroy);
 
+//社区广告
+router.get('/bbsads/list', controller.bbsads.list);
+router.get('/bbsads/getModelById', controller.bbsads.find);
+router.post('/bbsads/add', controller.bbsads.add);
+router.post('/bbsads/update', controller.bbsads.update);
+router.post('/bbsads/delete', controller.bbsads.destroy);
+
+//社区版块分类
+router.get('/bbscategories/list', controller.bbscategories.list);
+router.get('/bbscategories/getModelById', controller.bbscategories.find);
+router.post('/bbscategories/add', controller.bbscategories.add);
+router.post('/bbscategories/update', controller.bbscategories.update);
+router.post('/bbscategories/delete', controller.bbscategories.destroy);
+
+//社区帖子表
+router.get('/bbsinfos/list', controller.bbsinfos.list);
+router.get('/bbsinfos/getModelById', controller.bbsinfos.find);
+router.post('/bbsinfos/add', controller.bbsinfos.add);
+router.post('/bbsinfos/update', controller.bbsinfos.update);
+router.post('/bbsinfos/delete', controller.bbsinfos.destroy);
+
+//帖子评论表
+router.get('/bbscomments/list', controller.bbscomments.list);
+router.get('/bbscomments/getModelById', controller.bbscomments.find);
+router.post('/bbscomments/add', controller.bbscomments.add);
+router.post('/bbscomments/update', controller.bbscomments.update);
+router.post('/bbscomments/delete', controller.bbscomments.destroy);
 
 };
