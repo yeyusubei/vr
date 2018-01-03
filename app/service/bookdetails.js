@@ -2,27 +2,19 @@
 
 const Service = require('egg').Service;
 
-class BbsInfosService extends Service {
+class BookDetailsService extends Service {
 
   // 获取所有数据
-  async getList(limit) {
-    let result =null;
-    if (limit){
-      const sql = " select * from bbs_infos order by id desc LIMIT "+ limit;
-      result = await this.app.mysql.query(sql);
-
-    }else{
-      result = await this.app.mysql.select('bbs_infos', {
-        orders: [[ 'id', 'desc' ]], // 排序方式
-      });
-    }
-   
+  async getList() {
+    const result = await this.app.mysql.select('book_details', {
+      orders: [[ 'id', 'desc' ]], // 排序方式
+    });
     return { data: result };
   }
 
   // 根据用户id查询数据
   async findByID(id) {
-    const result = await this.app.mysql.get('bbs_infos', { id });
+    const result = await this.app.mysql.get('book_details', { id });
     return { data: result };
   }
 
@@ -31,7 +23,7 @@ class BbsInfosService extends Service {
     const { ctx, app } = this;
     data.createtime = ctx.helper.currentDateTime();
     // 新增数据
-    const result = await app.mysql.insert('bbs_infos', data);
+    const result = await app.mysql.insert('book_details', data);
     return {
       insertId: result.insertId, // 添加返回的ID
       error_code: result.affectedRows > 0 ? 0 : 1,
@@ -43,7 +35,7 @@ class BbsInfosService extends Service {
     // 修改数据，将会根据主键 ID 查找，并更新
     const { ctx, app } = this;
     data.createtime = ctx.helper.currentDateTime();
-    const result = await app.mysql.update('bbs_infos', data);
+    const result = await app.mysql.update('book_details', data);
     return {
       error_code: result.affectedRows > 0 ? 0 : 1,
       msg: result.affectedRows > 0 ? '修改成功' : '修改失败',
@@ -52,7 +44,7 @@ class BbsInfosService extends Service {
 
   // 根据id删除数据
   async destroyModel(id) {
-    const result = await this.app.mysql.delete('bbs_infos', { id });
+    const result = await this.app.mysql.delete('book_details', { id });
     return {
       error_code: result.affectedRows > 0 ? 0 : 1,
       msg: result.affectedRows > 0 ? '删除成功' : '删除失败',
@@ -61,4 +53,4 @@ class BbsInfosService extends Service {
 
 }
 
-module.exports = BbsInfosService;
+module.exports = BookDetailsService;

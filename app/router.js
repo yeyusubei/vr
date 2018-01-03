@@ -51,27 +51,6 @@ router.post('/infos/update', controller.infos.update);
 router.post('/infos/delete', controller.infos.destroy);
 router.get('/infos/listByPage', controller.infos.getListWithPage);
 
- // 卖家路由信息
- router.get('/seller/list', controller.seller.list);
- router.get('/seller/listByPage', controller.seller.getListWithPage);
- router.get('/seller/getUserById', controller.seller.find);
- router.post('/seller/add', controller.seller.add);
- router.post('/seller/update', controller.seller.update);
- router.post('/seller/delete', controller.seller.destroy);
-
- //图书分类
- router.get('/bookcategories/list',controller.bookcategories.list);
- router.get('/bookcategories/getById', controller.bookcategories.find);
- router.post('/bookcategories/add', controller.bookcategories.add);
- router.post('/bookcategories/update', controller.bookcategories.update);
- router.post('/bookcategories/delete', controller.bookcategories.destroy);
-
-//图书信息表
-router.get('/bookitems/list',controller.bookitems.list);
-router.get('/bookitems/getById', controller.bookitems.find);
-router.post('/bookitems/add', controller.bookitems.add);
-router.post('/bookitems/update', controller.bookitems.update);
-router.post('/bookitems/delete', controller.bookitems.destroy);
 
 //企业表
 router.get('/hirecompanies/list',controller.hirecompanies.list);
@@ -101,17 +80,17 @@ router.post('/hireprojectdetail/add', controller.hireprojectdetail.add);
 router.post('/hireprojectdetail/update', controller.hireprojectdetail.update);
 router.post('/hireprojectdetail/delete', controller.hireprojectdetail.destroy);
 
-  // 单文件上传
-  router.post('/goods/singleUpload', controller.upload.fileSingleUpload);
-  router.post('/goods/multipleUpload', controller.upload.MultipleUpload);
+// 单文件上传
+router.post('/goods/singleUpload', controller.upload.fileSingleUpload);
+router.post('/goods/multipleUpload', controller.upload.MultipleUpload);
 
 
-  // 首页轮播图路由
-  router.get('/banner/list', controller.banner.list);
-  router.get('/banner/getModelById', controller.banner.find);
-  router.post('/banner/add', controller.banner.add);
-  router.post('/banner/update', controller.banner.update);
-  router.post('/banner/delete', controller.banner.destroy);
+//首页轮播图路由
+router.get('/banner/list', controller.banner.list);
+router.get('/banner/getModelById', controller.banner.find);
+router.post('/banner/add', controller.banner.add);
+router.post('/banner/update', controller.banner.update);
+router.post('/banner/delete', controller.banner.destroy);
 
 //首页广告
 router.get('/homeads/list', controller.homeads.list);
@@ -154,5 +133,36 @@ router.get('/bbscomments/getModelById', controller.bbscomments.find);
 router.post('/bbscomments/add', controller.bbscomments.add);
 router.post('/bbscomments/update', controller.bbscomments.update);
 router.post('/bbscomments/delete', controller.bbscomments.destroy);
+
+//书城轮播
+router.get('/bookslide/list', controller.bookslide.list);
+router.get('/bookslide/getModelById', controller.bookslide.find);
+router.post('/bookslide/add', controller.bookslide.add);
+router.post('/bookslide/update', controller.bookslide.update);
+router.post('/bookslide/delete', controller.bookslide.destroy);
+
+
+
+// 卖家路由信息
+router.get('/seller/list', controller.seller.list);
+router.get('/seller/listByPage', controller.seller.getListWithPage);
+router.get('/seller/getUserById', controller.seller.find);
+router.post('/seller/add', controller.seller.add);
+router.post('/seller/update', controller.seller.update);
+router.post('/seller/delete', controller.seller.destroy);
+
+//图书分类
+router.get('/bookcategories/list',controller.bookcategories.list);
+router.get('/bookcategories/getById', controller.bookcategories.find);
+router.post('/bookcategories/add', controller.bookcategories.add);
+router.post('/bookcategories/update', controller.bookcategories.update);
+router.post('/bookcategories/delete', controller.bookcategories.destroy);
+
+//图书信息
+router.get('/bookdetails/list',controller.bookdetails.list);
+router.get('/bookdetails/getById', controller.bookdetails.find);
+router.post('/bookdetails/add', controller.bookdetails.add);
+router.post('/bookdetails/update', controller.bookdetails.update);
+router.post('/bookdetails/delete', controller.bookdetails.destroy);
 
 };

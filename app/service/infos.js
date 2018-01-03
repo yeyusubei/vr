@@ -4,10 +4,17 @@ const Service = require('egg').Service;
 
 class InfosService extends Service{
     // 获取所有数据
-  async getList() {
-    const result = await this.app.mysql.select('cms_infos', {
-      orders: [[ 'id', 'desc' ]], // 排序方式
-    });
+  async getList(limit) {
+    let result = null;
+    if(limit){
+      const sql = " select * from cms_infos LIMIT "+ limit;
+      result = await this.app.mysql.query(sql);
+    }else{
+      result = await this.app.mysql.select('cms_infos', {
+        orders: [[ 'id', 'desc' ]], // 排序方式
+      });
+    }
+     
     return { data: result };
   }
 
@@ -37,8 +44,17 @@ class InfosService extends Service{
   }
 
   //根据分类ID查询出对应文章
-  async findByCateID(cateId){
-    const result = await this.app.mysql.get('cms_infos',{category_id:cateId});
+  async findByCateID(cateId,limit){
+
+    let result = null;
+    if(limit){
+      const sql = " select * from cms_infos where category_id="+ cateId +"   LIMIT "+ limit;
+      result = await this.app.mysql.query(sql);
+    }else{
+      result = await this.app.mysql.get('cms_infos',{category_id:cateId});
+    }
+
+   
     return { data: result };
   }
 

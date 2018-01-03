@@ -2,12 +2,11 @@
 
 const Controller = require('egg').Controller;
 
-class BbsInfosController extends Controller {
+class BookSlideController extends Controller {
   async list() {
     // ctx, service属性挂在 this
     const { ctx, service } = this;
-    const limit = ctx.request.query.limit;
-    const result = await service.bbsinfos.getList(limit);
+    const result = await service.bookslide.getList();
     ctx.body = result;
     ctx.status = 200;
   }
@@ -16,7 +15,7 @@ class BbsInfosController extends Controller {
     const { ctx, service } = this;
     // get请求获取的参数ctx.request.query
     const id = ctx.request.query.id;
-    const result = await service.bbsinfos.findByID(id);
+    const result = await service.bookslide.findByID(id);
     ctx.body = result;
     ctx.status = 200;
   }
@@ -26,10 +25,9 @@ class BbsInfosController extends Controller {
     // 验证提交的参数
     ctx.validate({
       title: { type: 'string', required: true },
-      content: { type: 'string', required: true },     
-      creater_id: { type: 'int', required: true },     
+      url: { type: 'string', required: true },     
     });
-    const result = await service.bbsinfos.addModel(ctx.request.body);
+    const result = await service.bookslide.addModel(ctx.request.body);
     ctx.body = result;
     ctx.status = 200;
   }
@@ -40,10 +38,10 @@ class BbsInfosController extends Controller {
     ctx.validate({
       id: { type: 'string', required: true },
       title: { type: 'string', required: true },
-      content: { type: 'string', required: true },     
-      creater_id: { type: 'int', required: true },     
+      url: { type: 'string', required: true },
+     
     });
-    const result = await service.bbsinfos.updateModel(ctx.request.body);
+    const result = await service.bookslide.updateModel(ctx.request.body);
     ctx.body = result;
     ctx.status = 200;
   }
@@ -54,11 +52,11 @@ class BbsInfosController extends Controller {
       id: { type: 'string', required: true },
     });
     const id = ctx.request.body.id;
-    const result = await service.bbsinfos.destroyModel(id);
+    const result = await service.bookslide.destroyModel(id);
     ctx.body = result;
     ctx.status = 200;
   }
 
 }
 
-module.exports = BbsInfosController;
+module.exports = BookSlideController;

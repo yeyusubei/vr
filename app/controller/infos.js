@@ -6,7 +6,8 @@ class InfosController extends Controller {
   async list() {
     // ctx, service属性挂在 this
     const { ctx, service } = this;
-    const result = await service.infos.getList();
+    const limit = ctx.request.query.limit;
+    const result = await service.infos.getList(limit);
     ctx.body = result;
     ctx.status = 200;
   }
@@ -38,7 +39,8 @@ class InfosController extends Controller {
     const {ctx,service } =this;
      // get请求获取的参数ctx.request.query
      const cateId = ctx.request.query.cateId;
-     const result = await service.infos.findByCateID(cateId);
+     const limit = ctx.request.query.limit;
+     const result = await service.infos.findByCateID(cateId,limit);
      ctx.body = result;
      ctx.status = 200;
   }
